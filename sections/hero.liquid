@@ -1,0 +1,204 @@
+{{ 'section-hero.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'section-hero.js' | asset_url }}" defer="defer"></script>
+
+{%- if section.settings.video_id != blank -%}
+  <hero-section class="hero hero--video">
+    <div class="hero-video">
+      <div class="hero-video__video">
+        {%- liquid
+          assign video_class = 'js-video-wistia'
+        -%}
+        <div
+          class="{{- video_class -}}"
+          data-video-id="{{- section.settings.video_id -}}">
+          <div class="wistia_embed wistia_async_{{- section.settings.video_id -}}"></div>
+          <div id="custom-pause-button" class="hero-video__pause-button">Pause</div>
+        </div>
+      </div>
+      {%- if section.settings.dialog_link != blank -%}
+        <dialog class="hero-dialog" open>
+          <a href="" class="hero-dialog__link" title="{{ 'hero.dialog_link' | t }}">
+            {%- if section.settings.image != blank -%}
+              <img src="{{ section.settings.dialog_image | image_url: width: 130 }}" class="hero-dialog__image" loading="lazy" alt="{{ section.settings.dialog_image.alt | escape }}" width="{{ section.settings.dialog_image.width }}" height="{{ section.settings.dialog_image.height }}">
+            {%- endif -%}
+            <div class="hero-dialog__content">
+              {%- if section.settings.dialog_heading != blank -%}
+                <p class="hero-dialog__title">
+                  {{ section.settings.dialog_heading }}
+                  <span>{% render 'icon-right-arrow' %}</span>
+                </p>
+              {%- endif -%}
+              {%- if section.settings.dialog_text != blank -%}
+                <div class="hero-dialog__text">{{ section.settings.dialog_text }}</div>
+              {%- endif -%}
+            </div>
+  
+            <form method="dialog">
+              <button class="hero-dialog__close close-circle" title="{{ 'hero.close_button' | t }}">{% render 'icon-nav-close' %}</button>
+            </form>
+          </a>
+        </dialog>
+      {%- endif -%}
+    </div>
+  </div>
+{% else %}
+  <hero-section class="hero">
+    <div class="hero__item hero__item-media">
+        {%- if section.settings.image != blank -%}
+          <img class="hero__bg" src="{{ 'hero-bg.jpg' | asset_url }}" width="720" height="732" loading="lazy" alt="">
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+
+      <figure class="hero__media">
+        {%- if section.settings.image != blank -%}
+          <img src="{{ section.settings.image | image_url: width: 1440 }}"
+            alt="{{ section.settings.image.alt | escape }}"
+            loading="lazy"
+          >
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </figure>
+    </div>
+    <div class="hero__item hero__item-content">
+      <div class="hero__content hero__content--{{ section.settings.height }}">
+        {%- if section.settings.heading != blank -%}
+          {% render 'icon-purest-foods-star' %}
+          <h1 class="hero__heading">
+            {{ section.settings.heading }}
+          </h1>
+        {%- endif -%}
+
+        {%- if section.settings.text != blank -%}
+          <div class="hero__text body--large rte">
+            {{ section.settings.text }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.button_label != blank and section.settings.button_link -%}
+          <a href="{{ section.settings.button_link }}" class="btn btn-primary">
+            {{ section.settings.button_label | escape }}
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.button_label_2 != blank and section.settings.button_link_2 -%}
+          <a href="{{ section.settings.button_link_2 }}" class="btn btn-secondary">
+            {{ section.settings.button_label_2 | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+    {%- if section.settings.dialog_link != blank -%}
+      <dialog class="hero-dialog" open>
+        <a href="" class="hero-dialog__link" title="{{ 'hero.dialog_link' | t }}">
+          {%- if section.settings.image != blank -%}
+            <img src="{{ section.settings.dialog_image | image_url: width: 130 }}" class="hero-dialog__image" loading="lazy" alt="{{ section.settings.dialog_image.alt | escape }}" width="{{ section.settings.dialog_image.width }}" height="{{ section.settings.dialog_image.height }}">
+          {%- endif -%}
+          <div class="hero-dialog__content">
+            {%- if section.settings.dialog_heading != blank -%}
+              <p class="hero-dialog__title">
+                {{ section.settings.dialog_heading }}
+                <span>{% render 'icon-right-arrow' %}</span>
+              </p>
+            {%- endif -%}
+            {%- if section.settings.dialog_text != blank -%}
+              <div class="hero-dialog__text">{{ section.settings.dialog_text }}</div>
+            {%- endif -%}
+          </div>
+
+          <form method="dialog">
+            <button class="hero-dialog__close close-circle" title="{{ 'hero.close_button' | t }}">{% render 'icon-nav-close' %}</button>
+          </form>
+        </a>
+      </dialog>
+    {%- endif -%}
+  </hero-section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.hero.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.hero.settings.background_video.name"
+    },
+    {
+      "type": "text",
+      "id": "video_id",
+      "label": "t:sections.hero.settings.background_video.video_id"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.hero.name"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "t:sections.hero.settings.heading"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:sections.hero.settings.text"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.hero.settings.button_1.label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.hero.settings.button_1.link"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "t:sections.hero.settings.button_2.label"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "t:sections.hero.settings.button_2.link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.hero.settings.image"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.hero.settings.dialog.name"
+    },
+    {
+      "type": "image_picker",
+      "id": "dialog_image",
+      "label": "t:sections.hero.settings.dialog.image"
+    },
+    {
+      "type": "text",
+      "id": "dialog_heading",
+      "label": "t:sections.hero.settings.dialog.heading"
+    },
+    {
+      "type": "text",
+      "id": "dialog_text",
+      "label": "t:sections.hero.settings.dialog.text"
+    },
+    {
+      "type": "url",
+      "id": "dialog_link",
+      "label": "t:sections.hero.settings.dialog.link",
+      "info": "t:sections.hero.settings.dialog.link_info"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.hero.presets.name"
+    }
+  ]
+}
+{% endschema %}

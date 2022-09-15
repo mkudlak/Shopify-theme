@@ -2893,3 +2893,7 @@ details-disclosure > details {
 .font-body-bold {
   font-weight: var(--font-body-weight-bold);
 }
+
+.header__heading-link {
+  background: #46c291;
+}

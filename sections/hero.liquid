@@ -1,4 +1,9 @@
-<div class="video-hero-video__video">
+{{ 'section-video-hero.css' | asset_url | stylesheet_tag }}
+{% comment %} <script src="{{ 'section-video-hero.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+{%- if section.settings.video_id != blank -%}
+  <hero-section class="video-hero video-hero--video">
+    <div class="video-hero-video">
+      <div class="video-hero-video__video">
         {%- liquid
           assign wistiaId = section.settings.video_id
         -%}
@@ -51,3 +56,85 @@
           <script src="https://fast.wistia.com/embed/medias/{{wistiaId}}.jsonp" async> </script>
           <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
       </div>
+    </div>
+  </div>
+{% else %}
+  <video-hero-section class="video-hero">
+    <div class="video-hero__item display-flex align-items-center justify-content-center video-hero__item-media">
+        {%- if section.settings.image != blank -%}
+          <img class="video-hero__bg" src="{{ 'video-hero-bg.jpg' | asset_url }}" width="720" height="732" loading="lazy" alt="">
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      <figure class="video-hero__media">
+        {%- if section.settings.image != blank -%}
+          <img src="{{ section.settings.image | image_url: width: 1440 }}"
+            alt="{{ section.settings.image.alt | escape }}" width="100" height="100"
+            loading="lazy"/>
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </figure>
+    </div>
+    <div class="video-hero__item display-flex align-items-center justify-content-center video-hero__item-content">
+      <div class="video-hero__content video-hero__content--{{ section.settings.height }}">
+        {%- if section.settings.heading != blank -%}
+          {% render 'icon' with 'icon-purest-foods-star' %}
+          <h1 class="video-hero__heading">
+            {{ section.settings.heading }}
+          </h1>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="video-hero__text body--large rte">
+            {{ section.settings.text }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </video-hero-section>
+{%- endif -%}
+{% schema %}
+{
+  "name": "t:sections.video_hero.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.video_hero.settings.background_video.name"
+    },
+    {
+      "type": "text",
+      "id": "video_id",
+      "label": "t:sections.video_hero.settings.background_video.video_id"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.video_hero.name"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "t:sections.video_hero.settings.heading"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:sections.video_hero.settings.text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.video_hero.settings.image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "t:sections.video_hero.settings.image_mobile"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.video_hero.presets.name"
+    }
+  ]
+}
+{% endschema %}

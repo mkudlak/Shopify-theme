@@ -235,7 +235,39 @@
     },
     "1657116770e7b1a7c1": {
       "type": "featured-product",
+      "blocks": {
+        "172d657a-8939-48c7-aa01-90e2af418496": {
+          "type": "text",
+          "settings": {
+            "text": "Text block",
+            "text_style": "body"
+          }
+        },
+        "24570efd-c858-4c22-8ceb-452c58ee8a7f": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "139a64d5-ac4f-465b-b71e-24839a40459f": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        }
+      },
+      "block_order": [
+        "172d657a-8939-48c7-aa01-90e2af418496",
+        "24570efd-c858-4c22-8ceb-452c58ee8a7f",
+        "139a64d5-ac4f-465b-b71e-24839a40459f"
+      ],
       "settings": {
+        "product": "200-na-zakupy",
+        "color_scheme": "background-1",
+        "secondary_background": false,
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },

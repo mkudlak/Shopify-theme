@@ -2,6 +2,7 @@
   "sections": {
     "hero": {
       "type": "hero",
+      "disabled": true,
       "settings": {
         "video_id": "hl60at0vsv",
         "heading": "<p>frozen meals can be just as delicious as anything made fresh. And more convenient than you'd ever expect.<\/p>",
@@ -11,6 +12,7 @@
     },
     "image_banner": {
       "type": "image-banner",
+      "disabled": true,
       "blocks": {
         "heading": {
           "type": "heading",
@@ -67,6 +69,7 @@
     },
     "rich_text": {
       "type": "rich-text",
+      "disabled": true,
       "blocks": {
         "heading": {
           "type": "heading",
@@ -97,6 +100,7 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "Featured products",
         "heading_size": "h2",
@@ -124,6 +128,7 @@
     },
     "collage": {
       "type": "collage",
+      "disabled": true,
       "blocks": {
         "collection-0": {
           "type": "collection",
@@ -162,6 +167,7 @@
     },
     "video": {
       "type": "video",
+      "disabled": true,
       "settings": {
         "heading": "",
         "heading_size": "h1",
@@ -175,6 +181,7 @@
     },
     "multicolumn": {
       "type": "multicolumn",
+      "disabled": true,
       "blocks": {
         "column1": {
           "type": "column",
@@ -228,80 +235,7 @@
     },
     "1657116770e7b1a7c1": {
       "type": "featured-product",
-      "blocks": {
-        "16571167706992f674-0": {
-          "type": "text",
-          "settings": {
-            "text": "{{ section.settings.product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
-        "16571167706992f674-1": {
-          "type": "title",
-          "settings": {
-            "heading_size": "h1"
-          }
-        },
-        "16571167706992f674-2": {
-          "type": "text",
-          "settings": {
-            "text": "{{ section.settings.product.metafields.descriptors.subtitle.value }}",
-            "text_style": "subtitle"
-          }
-        },
-        "16571167706992f674-3": {
-          "type": "price",
-          "settings": {
-          }
-        },
-        "16571167706992f674-4": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button"
-          }
-        },
-        "16571167706992f674-5": {
-          "type": "quantity_selector",
-          "settings": {
-          }
-        },
-        "16571167706992f674-6": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true
-          }
-        },
-        "16571167706992f674-7": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
-        },
-        "41220c5c-87f4-4cba-9ed1-94ff729f41bc": {
-          "type": "rating",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "16571167706992f674-0",
-        "16571167706992f674-1",
-        "16571167706992f674-2",
-        "16571167706992f674-3",
-        "16571167706992f674-4",
-        "16571167706992f674-5",
-        "16571167706992f674-6",
-        "16571167706992f674-7",
-        "41220c5c-87f4-4cba-9ed1-94ff729f41bc"
-      ],
       "settings": {
-        "product": "200-na-zakupy",
-        "color_scheme": "background-1",
-        "secondary_background": false,
-        "hide_variants": false,
-        "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     }
   },
